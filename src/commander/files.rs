@@ -7,7 +7,7 @@ It is mostly used in the [files_tab][crate::ui::files_tab] module.
 use std::sync::LazyLock;
 
 use crate::{
-    commander::{ids::CommitId, log::Head, CommandError, Commander},
+    commander::{CommandError, Commander, ids::CommitId, log::Head},
     env::DiffFormat,
 };
 
@@ -117,7 +117,7 @@ impl Commander {
                                 path: inner_text.as_str().to_owned(),
                             })
                     })
-                    .collect())
+                    .collect());
             }
             Err(CommandError::Status(_, Some(2))) => {
                 // No conflicts
